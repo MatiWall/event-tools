@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Sphinx documentation
+docs/_build/
+
+# poetry
+#poetry.lock
+
+# Environments
+.venv
+venv/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+
+# PyCharm
+.idea/
+
+# CPP
+secrets.yml
+secrets.yaml
