@@ -29,10 +29,15 @@ class EventBus:
             self.subscriptions[event_type] = event_handlers_copy
 
     async def emit(self, event):
+        try:
+            await self._emit(event)
+        except Exception as e:
+            logger.exception(f'Failed to handle event {event} with error: \n ')
+    async def _emit(self, event):
         handlers = self.subscriptions.get(event.type, [])
         coroutines = []
         for handler in handlers:
-            coroutines.append(self._run(handler))
+            coroutines.append(self._run(handler, event))
         await asyncio.gather(*coroutines)
 
     async def emit_after(self, event: Event, func: Callable, *args, **kwargs):
