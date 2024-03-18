@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import pytest
-from event_tools import EventBus, Event
+from messaging_tools import EventBus, Message
 
 # Initialize logger
 logger = logging.getLogger(__name__)
@@ -12,7 +12,7 @@ def event_bus():
 
 @pytest.fixture
 def test_event():
-    return Event(type="test_event")
+    return Message(type="test_event")
 
 @pytest.mark.asyncio
 async def test_subscribe(event_bus):

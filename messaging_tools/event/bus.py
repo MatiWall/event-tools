@@ -2,10 +2,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 import asyncio
-from asyncio import coroutines
 from typing import Callable
 
-from event_tools.events import Event
+from messaging_tools.message import Message
 class EventBus:
     def __init__(self):
         self.subscriptions = {}
@@ -40,7 +39,7 @@ class EventBus:
             coroutines.append(self._run(handler, event))
         await asyncio.gather(*coroutines)
 
-    async def emit_after(self, event: Event, func: Callable, *args, **kwargs):
+    async def emit_after(self, event: Message, func: Callable, *args, **kwargs):
         res = await func(*args, **kwargs)
         await self.emit(event)
         return res

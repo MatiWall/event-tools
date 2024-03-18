@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "event-tools"
-version = "0.1.2"
+name = "messaging-tools"
+version = "0.1.0"
 description = ""
 authors = ["Matias Wallenius <mwl@danskecommodities.com>"]
 readme = "README.md"
