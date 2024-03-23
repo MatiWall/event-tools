@@ -5,7 +5,7 @@ description = ""
 authors = ["Matias Wallenius <mwl@danskecommodities.com>"]
 readme = "README.md"
 packages = [
-    {include = "event_tools"}
+    {include = "messaging_tools"}
 ]
 
 [[tool.poetry.source]]

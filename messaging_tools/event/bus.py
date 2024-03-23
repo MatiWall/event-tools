@@ -9,10 +9,13 @@ class EventBus:
     def __init__(self):
         self.subscriptions = {}
 
-    def subscribe(self, event_type, handler):
-        if event_type not in self.subscriptions:
-            self.subscriptions[event_type] = []
-        self.subscriptions[event_type].append(handler)
+    def subscribe(self, event_type: Union[str, list[str]], handler):
+        if isinstance(event_type, (Enum, str)):
+            event_type = [event_type]  # Convert to list if it's a single Enum
+        for event in event_type:
+            if event not in self.subscriptions:
+                self.subscriptions[event] = []
+            self.subscriptions[event].append(handler)
 
     def remove_subscriber(self, handler_name, event_type):
 
